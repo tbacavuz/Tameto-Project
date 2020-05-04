@@ -46,24 +46,34 @@
          <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Kayıt Yap</h4>
+                    <h4 class="modal-title" style="margin-left: 1rem;">Order</h4>
                     <button type="button" class="close" data-dismiss="modal">x</button>
                 </div>
                 <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
-                    <a class="btn btn-primary" href="/Products/Create" style="margin-right:10px; width:  150px;">
-                        Yeni Cihaz Kaydı
+                    <a class="btn btn-primary" href="/Menu" style="margin-right:10px; width:  150px;">
+                        Menu
                     </a>
 
-                    <a class="btn btn-primary" href="/Branches/Create" style="margin-right:10px; width: 150px;">
-                        Yeni Şube Ekle
-                    </a>
+                    <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
 
-                    <a class="btn btn-primary" href="/Users/Create" style="width: 150px;">
-                        Kullanıcı Kaydı
+                        <div class="input-group" style="
+
+">
+                            <input class="form-control" type="text" id="txtSearchBarcode" placeholder="Search">
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" id="btnSearchBarcode" type="button">
+                                    <i class="fa fa-search" style="color:white;"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>                 
+
+                    <a class="btn btn-primary" href="/Cart" style="width: 150px;">
+                        View Cart
                     </a>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Geri</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close<</button>
                 </div>
             </div>
 
@@ -75,23 +85,24 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Listeler</h4><button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title" style="margin-left: 1rem;">Order Status</h4><button type="button" class="close" data-dismiss="modal">x</button>
                 </div>
                 <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
-                    <a class="btn btn-primary" href="/Products" style="margin-right:10px; width:  150px;">
-                        Cihaz Listesi
+                    <a class="btn btn-primary" href="/Orderstatus" style="margin-right:10px; width:  150px;">
+                        Track Order
                     </a>
-                    <a class="btn btn-primary" href="/Users" style="margin-right:10px; width: 150px;">
-                        Çalışan Listesi
+                    <a class="btn btn-primary" href="/Feedback" style="margin-right:10px; width: 150px;">
+                        Leave Feedback
                     </a>
 
-                    <a class="btn btn-primary" href="/Branches" style="width: 150px;">
-                        Şube Listesi
-                    </a>
+                    <!--  <a class="btn btn-primary" href="/Branches" style="width: 150px;">
+    Şube Listesi
+
+            </a>  -->
                 </div>
 
                 <div class="modal-footer" style="">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Geri</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
@@ -104,27 +115,22 @@
             <div class="modal-content">
                 <div class="modal-header" style="
 ">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Barkod Okut</h4><button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title" style="margin-left: 1rem;">Settings</h4><button type="button" class="close" data-dismiss="modal">x</button>
 
 
                 </div>
-                <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
 
-                    <div class="input-group" style="
+                <a class="btn btn-primary" href="/User/account" style="margin-right:10px; width:  150px;">
+                    Change info
+                </a>
+                <a class="btn btn-primary" href="/User/Logout" style="margin-right:10px; width: 150px;">
+                    Log out
+                </a>
 
-">
-                        <input class="form-control" type="text" id="txtSearchBarcode" placeholder="Ara...">
-                        <span class="input-group-append">
-                            <button class="btn btn-primary" id="btnSearchBarcode" type="button">
-                                <i class="fa fa-search" style="color:white;"></i>
-                            </button>
-                        </span>
-                    </div>
-                </div>
 
                 <div class="modal-footer" style="
 ">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Geri</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
@@ -133,65 +139,65 @@
 
 </div>
 <div class="container-fluid" style="text-align:center;">
-    <img src="~/Resources\cwest.jpg" style="width:15%;">
+    <img src="http://www.imgim.com/logotasarım2.jpg" style="width:50%;">
     <div class="center-flex">
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#addmodal">
-            <img src="~/Resources/add_1.png" style="width: 30%;">
+            <img src="http://www.imgim.com/order-food-icon-10.jpg" style="width: 30%;">
             <h3 style="margin-top: 10px;">
-                Kayıt Yap
+                Order
             </h3>
             
             <div class="menu-info">
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Yeni Cihaz Kaydı
+                    <img src="http://www.imgim.com/menu(1).png" width="15" style="margin:5px" />
+                    Menu
                 </a>
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Yeni Şube Ekle
+                    <img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-1/512/search-icon.png" width="15" style="margin:5px" />
+                    Search
                 </a>
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Kullanıcı Kaydı
+                    <img src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Cart-add-icon.png" width="17" style="margin:5px" />
+                    View Cart
                 </a>
             </div>
 
         </div>
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#transmodal">
-            <img src="~/Resources/enterprise.png" style="width: 30%;">
+            <img src="http://www.imgim.com/ordertruck.png" style="width: 50%;">
 
             <h3 style="margin-top: 10px;">
-                Listeler
+                Order Status
             </h3>
             <div class="menu-info">
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Cihazları Listele
+                    <img src="http://www.imgim.com/food_app_-_filled_outline_-_29-33-512.png" width="20" style="margin:5px" />
+                    Track Order
                 </a>
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Kullanıcıları Listele
+                    <img src="http://www.imgim.com/customer-feedback-icon-52.png" width="20" style="margin:5px" />
+                    Leave Feedback
                 </a>
-                <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Şubeleri Listele
-                </a>
+                <!-- <a>
+           <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
+           Şubeleri Listele
+       </a>-->
             </div>
         </div>
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
-            <img src="~/Resources/barcode-scanner.png" style="width: 30%;">
+            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
             <h3 style="margin-top: 10px;">
-                Barkod
+                Settings
             </h3>
 
             <div class="menu-info">
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Barkod okut
+                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
+                    Change info
                 </a>
                 <a>
-                    <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-                    Manuel giriş ile arama yap
+                    <img src="https://www.flaticon.com/premium-icon/icons/svg/276/276363.svg" width="25" style="margin:5px" />
+                    Log out
                 </a>
 
             </div>
