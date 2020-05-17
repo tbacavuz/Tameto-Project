@@ -1,4 +1,10 @@
-﻿<style>
+﻿
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
     .maindiv-buttonbox {
         border: solid rgba(0,0,0, 0.4);
         background-color: whitesmoke;
@@ -6,14 +12,17 @@
         border-width: thin;
         position: relative;
         width: 350px;
-        height: 370px;
+        height: 250px;
         margin: 20px;
         transition-duration: 0.25s;
         padding-top: 45px;
         cursor: pointer;
-    }
+    } 
+   
 
-        .maindiv-buttonbox:hover {
+  
+    
+    .maindiv-buttonbox:hover {
             opacity: 1;
             border-radius: 7px;
             position: relative;
@@ -27,10 +36,11 @@
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         }
 
-     .center-flex {
+    .center-flex {
         display: flex;
         justify-content: center;
     }
+
     .menu-info > a {
         margin-right: auto;
         text-align: start;
@@ -43,8 +53,8 @@
     <div id="addmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true;">
         <div class="modal-dialog">
 
-         <!-- Modal content-->
-            <div class="modal-content">
+            <!-- Modal content-->
+            /*    <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" style="margin-left: 1rem;">Order</h4>
                     <button type="button" class="close" data-dismiss="modal">x</button>
@@ -66,7 +76,7 @@
                                 </button>
                             </span>
                         </div>
-                    </div>                 
+                    </div>
 
                     <a class="btn btn-primary" href="/Order/ViewCart" style="width: 150px;">
                         View Cart
@@ -88,14 +98,17 @@
                     <h4 class="modal-title" style="margin-left: 1rem;">Order Status</h4><button type="button" class="close" data-dismiss="modal">x</button>
                 </div>
                 <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
-                    <a class="btn btn-primary" href="/OrderStatus/Track" style="margin-right:10px; width:  150px;">
+                    <a class="btn btn-primary" href="/Orderstatus/Track" style="margin-right:10px; width:  150px;">
                         Track Order
                     </a>
-                    <a class="btn btn-primary" href="/OrderStatus/Feedback" style="margin-right:10px; width: 150px;">
+                    <a class="btn btn-primary" href="/Orderstatus/Feedback" style="margin-right:10px; width: 150px;">
                         Leave Feedback
                     </a>
 
-                    
+                    <!--  <a class="btn btn-primary" href="/Branches" style="width: 150px;">
+                    Şube Listesi
+
+                            </a>  -->
                 </div>
 
                 <div class="modal-footer" style="">
@@ -105,6 +118,9 @@
 
         </div>
     </div>
+
+
+
     <div id="searchmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
 
@@ -112,16 +128,19 @@
             <div class="modal-content">
                 <div class="modal-header" style="
 ">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Settings</h4><button type="button" class="close" data-dismiss="modal">x</button>
+                    <h4 class="modal-title" style="margin-left: 1rem;">Pizza 3</h4><button type="button" class="close" data-dismiss="modal">x</button>
 
 
                 </div>
 
-                <a class="btn btn-primary" href="/User/Account" style="margin-right:10px; width:  150px;">
-                    Change info
+                <h3 class="modal-body">İçerik</h3>
+
+                <a class="btn btn-primary" href="/User/Logout" style="margin-left:20px; width: 150px;">
+                    Add to cart
                 </a>
-                <a class="btn btn-primary" href="/User/Logout" style="margin-right:10px; width: 150px;">
-                    Log out
+
+                <a class="btn btn-primary" href="/User/Logout" style="margin-right:350px; width: 50px;">
+                    Add to cart
                 </a>
 
 
@@ -136,78 +155,71 @@
 
 </div>
 <div class="container-fluid" style="text-align:center;">
-    <img src="https://i.ibb.co/k96xr4M/Logo-tasar-m2.jpg" style="width:50%;">
+    <img src="http://www.imgim.com/logotasarım2.jpg" style="width:50%;">
     <div class="center-flex">
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#addmodal">
-            <img src="https://i.ibb.co/ZLd7zPd/order-food-icon-10.png" style="width: 30%;">
+            <img src="http://www.imgim.com/mixpizza.png" style="width:50%;">
             <h3 style="margin-top: 10px;">
-                Order
+                Mix Pizza
             </h3>
-            
+
             <div class="menu-info">
                 <a>
-                    <img src="https://i.ibb.co/fdFGf1N/menu-1.png" width="15" style="margin:5px" />
-                    Menu
+                    <img src="http://www.imgim.com/menu(1).png" width="15" style="margin:5px" />
+                    Add to cart
                 </a>
-                <a>
-                    <img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-1/512/search-icon.png" width="15" style="margin:5px" />
-                    Search
-                </a>
-                <a>
-                    <img src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Cart-add-icon.png" width="17" style="margin:5px" />
-                    View Cart
-                </a>
+                
+              
             </div>
 
         </div>
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#transmodal">
-            <img src="https://i.ibb.co/DVVJVdb/Order-truck.png" style="width: 50%;">
+            <img src="http://www.imgim.com/ordertruck.png" style="width: 50%;">
 
             <h3 style="margin-top: 10px;">
-                Order Status
+                Pizza 2
             </h3>
+ 
             <div class="menu-info">
                 <a>
-                    <img src="https://i.ibb.co/rwPzq5y/Food-App-Filled-Outline-29-33-512.png" width="20" style="margin:5px" />
-                    Track Order
+
+                    <img src="http://www.imgim.com/food_app_-_filled_outline_-_29-33-512.png" width="20" style="margin:5px" />
+                    Add to Cart
+
                 </a>
-                <a>
-                    <img src="https://i.ibb.co/nD4VLyN/customer-feedback-icon-52.png" width="20" style="margin:5px" />
-                    Leave Feedback
-                </a>
-             
+
+
             </div>
         </div>
         <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
-            <img src="https://i.ibb.co/6N8PZVN/Settings.png" style="width: 30%;">
+            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
             <h3 style="margin-top: 10px;">
-                Settings
+
+
+                Pizza 3
             </h3>
 
             <div class="menu-info">
                 <a>
-                    <img src="https://i.ibb.co/vBgJzYz/pngtree-vector-edit-profile-icon-png-image-4101361.jpg" width="25" style="margin:5px" />
+                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
                     Change info
                 </a>
-                <a>
-                    <img src="https://www.flaticon.com/premium-icon/icons/svg/276/276363.svg" width="25" style="margin:5px" />
-                    Log out
-                </a>
-
             </div>
         </div>
+
+        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
+            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
+            <h3 style="margin-top: 10px;">
+                Pizza 4
+            </h3>
+
+            <div class="menu-info">
+                <a>
+                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
+                    Change info
+                </a>
+            </div>
+        </div>
+
     </div>
 </div>
-<script>
-    $('#txtSearchBarcode').keypress(function (e) {
-        if (e.which == 13) {
-            window.location.href = "/Products/Barcode?barcode=" + $("#txtSearchBarcode").val();
-            return false;
-        }
-    });
-    $("#btnSearchBarcode").click(function ()
-    {
-        window.location.href = "/Products/Barcode?barcode="+$("#txtSearchBarcode").val();
-    });
-    
-</script>
