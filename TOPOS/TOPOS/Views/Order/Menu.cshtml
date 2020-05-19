@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .maindiv-buttonbox {
+        border: solid rgba(0,0,0, 0.4);
+        background-color: whitesmoke;
+        border-radius: 7px;
+        border-width: thin;
+        position: relative;
+        width: 350px;
+        height: 250px;
+        margin: 20px;
+        transition-duration: 0.25s;
+        padding-top: 45px;
+        cursor: pointer;
+    } 
+   
+
+  
+    
+    .maindiv-buttonbox:hover {
+            opacity: 1;
+            border-radius: 7px;
+            position: relative;
+            width: 350px;
+            height: 370px;
+            margin: 20px;
+            transform: translateY(-10px);
+            transition-duration: 0.25s;
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+
+    .center-flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu-info > a {
+        margin-right: auto;
+        text-align: start;
+        display: block;
+        margin-left: 6vh;
+        line-height: 25px;
+    }
+</style>
+<div id="modals">
+    <div id="addmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true;">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            /*    <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="margin-left: 1rem;">Order</h4>
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
+                    <a class="btn btn-primary" href="/Order/Menu" style="margin-right:10px; width:  150px;">
+                        Menu
+                    </a>
+
+                    <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
+
+                        <div class="input-group" style="
+
+">
+                            <input class="form-control" type="text" id="txtSearchBarcode" placeholder="Search">
+                            <span class="input-group-append">
+                                <button class="btn btn-primary" id="btnSearchBarcode" type="button">
+                                    <i class="fa fa-search" style="color:white;"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary" href="/Order/ViewCart" style="width: 150px;">
+                        View Cart
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close<</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="transmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" style="margin-left: 1rem;">Order Status</h4><button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
+                    <a class="btn btn-primary" href="/Orderstatus/Track" style="margin-right:10px; width:  150px;">
+                        Track Order
+                    </a>
+                    <a class="btn btn-primary" href="/Orderstatus/Feedback" style="margin-right:10px; width: 150px;">
+                        Leave Feedback
+                    </a>
+
+                    <!--  <a class="btn btn-primary" href="/Branches" style="width: 150px;">
+                    Şube Listesi
+
+                            </a>  -->
+                </div>
+
+                <div class="modal-footer" style="">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div id="searchmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="
+">
+                    <h4 class="modal-title" style="margin-left: 1rem;">Pizza 3</h4><button type="button" class="close" data-dismiss="modal">x</button>
+
+
+                </div>
+
+                <h3 class="modal-body">İçerik</h3>
+
+                <a class="btn btn-primary" href="/User/Logout" style="margin-left:20px; width: 150px;">
+                    Add to cart
+                </a>
+
+                <a class="btn btn-primary" href="/User/Logout" style="margin-right:350px; width: 50px;">
+                    Add to cart
+                </a>
+
+
+                <div class="modal-footer" style="
+">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid" style="text-align:center;">
+    <img src="http://www.imgim.com/logotasarım2.jpg" style="width:50%;">
+    <div class="center-flex">
+        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#addmodal">
+            <img src="http://www.imgim.com/mixpizza.png" style="width:50%;">
+            <h3 style="margin-top: 10px;">
+                Mix Pizza
+            </h3>
+
+            <div class="menu-info">
+                <a>
+                    <img src="http://www.imgim.com/menu(1).png" width="15" style="margin:5px" />
+                    Add to cart
+                </a>
+                
+              
+            </div>
+
+        </div>
+        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#transmodal">
+            <img src="http://www.imgim.com/ordertruck.png" style="width: 50%;">
+
+            <h3 style="margin-top: 10px;">
+                Pizza 2
+            </h3>
+ 
+            <div class="menu-info">
+                <a>
+
+                    <img src="http://www.imgim.com/food_app_-_filled_outline_-_29-33-512.png" width="20" style="margin:5px" />
+                    Add to Cart
+
+                </a>
+
+
+            </div>
+        </div>
+        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
+            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
+            <h3 style="margin-top: 10px;">
+
+
+                Pizza 3
+            </h3>
+
+            <div class="menu-info">
+                <a>
+                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
+                    Change info
+                </a>
+            </div>
+        </div>
+
+        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
+            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
+            <h3 style="margin-top: 10px;">
+                Pizza 4
+            </h3>
+
+            <div class="menu-info">
+                <a>
+                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
+                    Change info
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
