@@ -1,0 +1,122 @@
+﻿@model IEnumerable<TOPOS.Models.Users>
+
+@{
+    ViewBag.Title = "Worker Login";
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worker Login</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .west-text-error {
+            font-size: 2vh;
+            color: indianred;
+            font-weight: bold;
+            text-align: center;
+            display: block;
+            margin: 3vh;
+        }
+
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+            button:hover {
+                opacity: 0.8;
+            }
+
+        .revealpsw {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+
+        .container {
+            padding: 16px;
+        }
+
+        @@media screen and (max-width: 300px) {
+
+            .revealpsw {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body style="margin-left: 35%;margin-right: 35%;border-radius: 4px;background-color:#343434;">
+
+    <img style="margin-bottom:1vh;width: 100%;margin-top:13vh"
+         src="~/img/landing-logo.png" />
+
+    <div style="margin-top:1rem;background-color:#ffffff;border-radius:inherit">
+        @using (Html.BeginForm("Auth", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="isim.soyisim" name="username" required="">
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="" name="password" required="" id="pass">
+
+                <button type="submit">Login</button>
+            </div>
+
+            <a class="west-text-error">@ViewBag.Error</a>
+
+            <div class="container" style="        background-color: #f1f1f1
+">
+                <button type="button" class="revealpsw" onmouseup="showpsw()" onmousedown="showpsw()">Show Password</button>
+                <button type="button" href="~/Customers/Create" class="revealpsw" style="background-color: #4CAF50;margin-left: 27vh;">Create Account</button>
+            </div>
+
+        }
+    </div>
+    <script>
+            function showpsw() {
+                var x = document.getElementById("pass");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }</script>
+
+
+</body>
+</html>

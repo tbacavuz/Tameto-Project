@@ -1,4 +1,6 @@
-﻿<style>
+﻿@model  TOPOS.Controllers.HomeReturnResults
+
+<style>
     .maindiv-buttonbox {
         border: solid rgba(0,0,0, 0.4);
         background-color: whitesmoke;
@@ -27,10 +29,11 @@
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         }
 
-     .center-flex {
+    .center-flex {
         display: flex;
         justify-content: center;
     }
+
     .menu-info > a {
         margin-right: auto;
         text-align: start;
@@ -39,181 +42,892 @@
         line-height: 25px;
     }
 </style>
-<div id="modals">
-    <div id="addmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true;">
-        <div class="modal-dialog">
+<div id="page-content">
+    <!-- end .thumbnail-slide -->
+    <!-- start #main-wrapper -->
+    <div class="container">
+        <div class="row mt30">
+            <div class="col-md-9 col-sm-12 col-md-push-3">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active">
+                        <a href="#tab-1" role="tab" data-toggle="tab">All</a>
+                    </li>
+                    @foreach (var item in Model.ProductTypes)
+                    {
+                        <li>
+                            <a href="#tab-2" role="tab" data-toggle="tab">@item.Name</a>
+                        </li>
+                    }
 
-         <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Order</h4>
-                    <button type="button" class="close" data-dismiss="modal">x</button>
-                </div>
-                <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
-                    <a class="btn btn-primary" href="/Menu" style="margin-right:10px; width:  150px;">
-                        Menu
-                    </a>
+                </ul>
 
-                    <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
+                <!-- end view-style -->
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="tab-1">
+                        <div class="all-menu-details">
+                            @foreach (var item in Model.Products)
+                            {
 
-                        <div class="input-group" style="
 
-">
-                            <input class="form-control" type="text" id="txtSearchBarcode" placeholder="Search">
-                            <span class="input-group-append">
-                                <button class="btn btn-primary" id="btnSearchBarcode" type="button">
-                                    <i class="fa fa-search" style="color:white;"></i>
-                                </button>
-                            </span>
+                                <div class="item-list">
+                                    <div class="list-image">
+                                        <img src="~/img/content/menu-list-img.jpg" alt="">
+                                    </div>
+                                    <div class="all-details">
+                                        <div class="visible-option">
+                                            <div class="details">
+                                                <h6>
+                                                    <a href="dish.html">@item.Name</a>
+                                                </h6>
+                                                <p class="m-with-details"><strong>Description:</strong><br>@item.Details</p>
+
+                                                <p class="m-with-details"><strong>Ingredients:</strong><br>@item.Details</p>
+
+                                                <p class="for-list">@item.Details</p>
+                                            </div>
+
+                                            <div class="price-option fl">
+                                                <h4>$ @item.Price</h4>
+                                                <h5 style="margin-left:3.2vh;padding-top:0; margin-top:1.4vh">Price</h5>
+                                            </div>
+                                            <!-- end .price-option-->
+                                            <div class="qty-cart text-center">
+                                                <h6>Quantity</h6>
+                                                <form class="default-form">
+                                                    <a hidden class="productId" data-id="@item.Id"></a>
+                                                    <input type="text" class="productQuantity" placeholder="1" value="1">
+                                                    <br>
+                                                    <button class="quantity_button" type="button">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </button>
+                                                </form>
+                                            </div> <!-- end .qty-cart -->
+                                        </div> <!-- end .vsible-option -->
+                                        <!--end .dropdown-option-->
+                                    </div>
+                                    <!-- end .all-details -->
+                                </div>
+
+                            }
+
+                            <!-- end .item-list -->
                         </div>
-                    </div>                 
+                        <!--end all-menu-details-->
 
-                    <a class="btn btn-primary" href="/Cart" style="width: 150px;">
-                        View Cart
-                    </a>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close<</button>
-                </div>
+                    </div> <!-- end .tab-pane -->
+
+                    <div class="tab-pane fade" id="tab-2">
+                        <div class="all-menu-details">
+                            <div class="item-list">
+                                <div class="list-image">
+                                    <img src="img\content\menu-list-img.jpg" alt="">
+                                </div>
+                                <div class="all-details">
+                                    <div class="visible-option">
+                                        <div class="details">
+                                            <h6>
+                                                <a href="dish.html">01. Shrimps</a>
+                                            </h6>
+                                            <ul class="share-this list-inline text-right">
+                                                <li>
+                                                    <a href="#">Share</a>
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <p class="m-with-details"><strong>Description:</strong><br>Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue.</p>
+
+                                            <p class="m-with-details"><strong>Ingredients:</strong><br>5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+
+                                            <p class="for-list">5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+                                        </div>
+
+                                        <div class="price-option fl">
+                                            <h4>$ 9.95</h4>
+                                            <button class="toggle">Option</button>
+                                        </div>
+                                        <!-- end .price-option-->
+                                        <div class="qty-cart text-center clearfix">
+                                            <h6>Qty</h6>
+                                            <form class="">
+                                                <input type="text" placeholder="1">
+                                                <br>
+                                                <button>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
+                                        </div> <!-- end .qty-cart -->
+                                    </div> <!-- end .vsible-option -->
+
+                                    <div class="dropdown-option clearfix" style="display: none;">
+                                        <div class="dropdown-details">
+                                            <form class="default-form">
+                                                <h5>Please Select Your Option</h5>
+                                                <h6>Option</h6>
+                                                <span class="radio-input">
+                                                    <input type="radio" id="rice-13" name="choose">
+                                                    <label for="rice-13">Rice</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="noodles-13" name="choose">
+                                                    <label for="noodles-13">Noodles</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="bread-13" name="choose">
+                                                    <label for="bread-13">Bread</label>
+                                                </span>
+
+                                                <h6>Extras</h6>
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="shrimps-13">
+                                                    <label for="shrimps-13">
+                                                        Double Shrimps<i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="extra-veggies-13">
+                                                    <label for="extra-veggies-13">
+                                                        Extra Veggies <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="additional-butter-13">
+                                                    <label for="additional-butter-13">
+                                                        Additional Butter <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <h6>Additional Notes</h6>
+                                                <textarea placeholder="Write here"></textarea>
+
+                                                <a class="btn btn-default-red">Confirm</a>
+                                                <a class="btn btn-default-black">Cancle</a>
+                                            </form>
+                                        </div>
+                                        <!--end .dropdown-details-->
+                                    </div>
+                                    <!--end .dropdown-option-->
+                                </div>
+                                <!-- end .all-details -->
+                            </div>
+                            <!-- end .item-list -->
+
+                            <div class="item-list">
+                                <div class="list-image">
+                                    <img src="img\content\menu-list-img.jpg" alt="">
+                                </div>
+                                <div class="all-details">
+                                    <div class="visible-option">
+                                        <div class="details">
+                                            <h6>
+                                                <a href="#">01. Shrimps</a>
+                                            </h6>
+                                            <ul class="share-this list-inline text-right">
+                                                <li>
+                                                    <a href="#">Share</a>
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <p class="m-with-details"><strong>Description:</strong><br>Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue.</p>
+
+                                            <p class="m-with-details"><strong>Ingredients:</strong><br>5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+
+                                            <p class="for-list">5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+                                        </div>
+
+                                        <div class="price-option fl">
+                                            <h4>$ 9.95</h4>
+                                            <button class="toggle">Option</button>
+                                        </div>
+                                        <!-- end .price-option-->
+                                        <div class="qty-cart text-center clearfix">
+                                            <h6>Qty</h6>
+                                            <form class="">
+                                                <input type="text" placeholder="1">
+                                                <br>
+                                                <button>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
+                                        </div> <!-- end .qty-cart -->
+                                    </div> <!-- end .vsible-option -->
+
+                                    <div class="dropdown-option clearfix" style="display: none;">
+                                        <div class="dropdown-details">
+                                            <form class="default-form">
+                                                <h5>Please Select Your Option</h5>
+                                                <h6>Option</h6>
+                                                <span class="radio-input">
+                                                    <input type="radio" id="rice-14" name="choose">
+                                                    <label for="rice-14">Rice</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="noodles-14" name="choose">
+                                                    <label for="noodles-14">Noodles</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="bread-14" name="choose">
+                                                    <label for="bread-14">Bread</label>
+                                                </span>
+
+                                                <h6>Extras</h6>
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="shrimps-14">
+                                                    <label for="shrimps-14">
+                                                        Double Shrimps<i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="extra-veggies-14">
+                                                    <label for="extra-veggies-14">
+                                                        Extra Veggies <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="additional-butter-14">
+                                                    <label for="additional-butter-14">
+                                                        Additional Butter <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <h6>Additional Notes</h6>
+                                                <textarea placeholder="Write here"></textarea>
+
+                                                <a class="btn btn-default-red">Confirm</a>
+                                                <a class="btn btn-default-black">Cancle</a>
+                                            </form>
+                                        </div>
+                                        <!--end .dropdown-details-->
+                                    </div>
+                                    <!--end .dropdown-option-->
+                                </div>
+                                <!-- end .all-details -->
+                            </div>
+                            <!-- end .item-list -->
+
+                            <div class="item-list">
+                                <div class="list-image">
+                                    <img src="img\content\menu-list-img.jpg" alt="">
+                                </div>
+                                <div class="all-details">
+                                    <div class="visible-option">
+                                        <div class="details">
+                                            <h6>
+                                                <a href="#">01. Shrimps</a>
+                                            </h6>
+                                            <ul class="share-this list-inline text-right">
+                                                <li>
+                                                    <a href="#">Share</a>
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <p class="m-with-details"><strong>Description:</strong><br>Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue.</p>
+
+                                            <p class="m-with-details"><strong>Ingredients:</strong><br>5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+
+                                            <p class="for-list">5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+                                        </div>
+
+                                        <div class="price-option fl">
+                                            <h4>$ 9.95</h4>
+                                            <button class="toggle">Option</button>
+                                        </div>
+                                        <!-- end .price-option-->
+                                        <div class="qty-cart text-center clearfix">
+                                            <h6>Qty</h6>
+                                            <form class="">
+                                                <input type="text" placeholder="1">
+                                                <br>
+                                                <button>
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
+                                        </div> <!-- end .qty-cart -->
+                                    </div> <!-- end .vsible-option -->
+
+                                    <div class="dropdown-option clearfix" style="display: none;">
+                                        <div class="dropdown-details">
+                                            <form class="default-form">
+                                                <h5>Please Select Your Option</h5>
+                                                <h6>Option</h6>
+                                                <span class="radio-input">
+                                                    <input type="radio" id="rice-15" name="choose">
+                                                    <label for="rice-15">Rice</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="noodles-15" name="choose">
+                                                    <label for="noodles-15">Noodles</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="bread-15" name="choose">
+                                                    <label for="bread-15">Bread</label>
+                                                </span>
+
+                                                <h6>Extras</h6>
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="shrimps-15">
+                                                    <label for="shrimps-15">
+                                                        Double Shrimps<i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="extra-veggies-15">
+                                                    <label for="extra-veggies-15">
+                                                        Extra Veggies <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="additional-butter-15">
+                                                    <label for="additional-butter-15">
+                                                        Additional Butter <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <h6>Additional Notes</h6>
+                                                <textarea placeholder="Write here"></textarea>
+
+                                                <a class="btn btn-default-red">Confirm</a>
+                                                <a class="btn btn-default-black">Cancle</a>
+                                            </form>
+                                        </div>
+                                        <!--end .dropdown-details-->
+                                    </div>
+                                    <!--end .dropdown-option-->
+                                </div>
+                                <!-- end .all-details -->
+                            </div>
+                            <!-- end .item-list -->
+
+                            <div class="item-list">
+                                <div class="list-image">
+                                    <img src="img\content\menu-list-img.jpg" alt="">
+                                </div>
+                                <div class="all-details">
+                                    <div class="visible-option">
+                                        <div class="details">
+                                            <h6>
+                                                <a href="#">01. Shrimps</a>
+                                            </h6>
+                                            <ul class="share-this list-inline text-right">
+                                                <li>
+                                                    <a href="#">Share</a>
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-facebook-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-twitter-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <p class="m-with-details"><strong>Description:</strong><br>Phasellus ornare, ante vitae consectetuer consequat, purus sapien ultricies dolor, et mollis pede metus eget nisi. Praesent sodales velit quis augue.</p>
+
+                                            <p class="m-with-details"><strong>Ingredients:</strong><br>5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+
+                                            <p class="for-list">5 tiger shrimps, garlic, butter, lemon, herbs, 5 tiger shrimps, garlic, butter, lemon, herbs</p>
+                                        </div>
+
+                                        <div class="price-option fl">
+                                            <h4>$ 9.95</h4>
+                                            <button class="toggle">Option</button>
+                                        </div>
+                                        <!-- end .price-option-->
+                                        <div class="qty-cart text-center clearfix">
+                                            <h6>Qty</h6>
+                                            <form class="">
+                                                <input type="text" placeholder="1">
+                                                <br>
+                                                <button class="quantity_button">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
+                                        </div> <!-- end .qty-cart -->
+                                    </div> <!-- end .vsible-option -->
+
+                                    <div class="dropdown-option clearfix" style="display: none;">
+                                        <div class="dropdown-details">
+                                            <form class="default-form">
+                                                <h5>Please Select Your Option</h5>
+                                                <h6>Option</h6>
+                                                <span class="radio-input">
+                                                    <input type="radio" id="rice-16" name="choose">
+                                                    <label for="rice-16">Rice</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="noodles-16" name="choose">
+                                                    <label for="noodles-16">Noodles</label>
+                                                </span>
+
+                                                <span class="radio-input">
+                                                    <input type="radio" id="bread-16" name="choose">
+                                                    <label for="bread-16">Bread</label>
+                                                </span>
+
+                                                <h6>Extras</h6>
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="shrimps-16">
+                                                    <label for="shrimps-16">
+                                                        Double Shrimps<i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="extra-veggies-16">
+                                                    <label for="extra-veggies-16">
+                                                        Extra Veggies <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <span class="checkbox-input">
+                                                    <input type="checkbox" id="additional-butter-16">
+                                                    <label for="additional-butter-16">
+                                                        Additional Butter <i class="fa fa-plus price">$3.00</i>
+                                                    </label>
+                                                </span>
+
+                                                <h6>Additional Notes</h6>
+                                                <textarea placeholder="Write here"></textarea>
+
+                                                <a class="btn btn-default-red">Confirm</a>
+                                                <a class="btn btn-default-black">Cancle</a>
+                                            </form>
+                                        </div>
+                                        <!--end .dropdown-details-->
+                                    </div>
+                                    <!--end .dropdown-option-->
+                                </div>
+                                <!-- end .all-details -->
+                            </div>
+                            <!-- end .item-list -->
+                        </div>
+                        <!-- end all-menu-details -->
+                    </div> <!-- end .tab-pane  -->
+                </div> <!-- end .tab-content -->
             </div>
+            <!--end main-grid layout-->
+            <!-- Side-panel begin -->
+            <div class="col-md-3 col-sm-12 col-xs-12 col-md-pull-9">
+                <div class="side-panel">
+                    <form class="default-form" action="index.html">
+                        <h6 class="toggle-main-title">Side Panel</h6>
+                        <div class="sd-panel-heading" style="display: none;">
+                            <h5 class="toggle-title">My Check</h5>
+                            <div class="slideToggle" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <p>
+                                            2x Shrimps
+                                            <span class="icon-link">
+                                                <i class="fa fa-pencil"></i><i class="fa fa-times"></i>
+                                            </span>
+                                        </p>
 
-        </div>
-    </div>
-    <div id="transmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
+                                        <p class="price">$ 19.95</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            1x Coca cola
+                                            <span class="icon-link">
+                                                <i class="fa fa-pencil"></i><i class="fa fa-times"></i>
+                                            </span>
+                                        </p>
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Order Status</h4><button type="button" class="close" data-dismiss="modal">x</button>
+                                        <p class="price">$ 1.95</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            1x Sake
+                                            <span class="icon-link">
+                                                <i class="fa fa-pencil"></i><i class="fa fa-times"></i>
+                                            </span>
+                                        </p>
+
+                                        <p class="price">$ 15.95</p>
+                                    </li>
+
+                                    <li>
+                                        <!-- list for total price-->
+                                        <p>Total</p>
+                                        <p class="price-total">$ 35.95</p>
+                                    </li>
+                                </ul>
+
+                                <div class="checkout">
+                                    <a class="btn btn-default-red" href="#"><i class="fa fa-shopping-cart"></i>Checkout</a>
+                                </div>
+                            </div>
+                            <!--end .slide-toggle -->
+                        </div>
+                        <!-- end .sd-side-panel class -->
+
+                        <div class="search-keyword">
+                            <input type="text" placeholder="Search by keyword">
+                            <button type="submit" value="">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                        <!-- end .search-keyword -->
+                        <div class="category">
+                            <h5 class="">Category</h5>
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Fruits</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fruits-1">
+                                            <label for="fruits-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fruits-2">
+                                            <label for="fruits-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fruits-3">
+                                            <label for="fruits-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Meat</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="meat-1">
+                                            <label for="meat-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="meat-2">
+                                            <label for="meat-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="meat-3">
+                                            <label for="meat-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Fish</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fish-1">
+                                            <label for="fish-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fish-2">
+                                            <label for="fish-1">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="fish-3">
+                                            <label for="fish-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">poultry</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="poultry-1">
+                                            <label for="poultry-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="poultry-2">
+                                            <label for="poultry-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="poultry-3">
+                                            <label for="poultry-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Vegitables</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="vegitable-1">
+                                            <label for="vegitable-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="vegitable-2">
+                                            <label for="vegitable-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="vegitable-3">
+                                            <label for="vegitable-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Drinks</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="drinks-1">
+                                            <label for="drinks-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="drinks-2">
+                                            <label for="drinks-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="drinks-3">
+                                            <label for="drinks-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="toggle-content">
+                                <h5 class="toggle-title">Desserts</h5>
+                                <ul class="list-unstyled" style="display: none;">
+                                    <li>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="desserts-1">
+                                            <label for="desserts-1">Chicken</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="desserts-2">
+                                            <label for="desserts-2">Duck</label>
+                                        </span>
+                                        <span class="checkbox-input">
+                                            <input type="checkbox" id="desserts-3">
+                                            <label for="desserts-3">Turky</label>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end .category-->
+                        <div class="miscellaneous">
+                            <h5 class="">Miscellaneous</h5>
+                            <div class="radio">
+                                <span class="radio-input active">
+                                    <input type="radio" name="name-1" id="yes" checked="">
+                                    <label for="yes">Yes</label>
+                                </span>
+                                <span class="radio-input">
+                                    <input type="radio" name="name-1" id="no">
+                                    <label for="no">No</label>
+                                </span>
+                            </div>
+                            <!--end .radio-input -->
+                            <span class="checkbox-input active">
+                                <input type="checkbox" id="option-1" checked="">
+                                <label for="option-1">Option1</label>
+                            </span>
+                            <span class="checkbox-input">
+                                <input type="checkbox" id="option-2">
+                                <label for="option-2">Option2</label>
+                            </span>
+
+                            <div class="tag">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="#">Tag 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tag 2</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Tag 3</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end .miscellaneous-->
+                        <!-- PRICE FILTER : begin -->
+                        <div class="properties-search-filter">
+                            <div class="price-filter">
+                                <h5>Price Range</h5>
+                                <div class="">
+                                    <div class="slider-range-container">
+                                        <div class="slider-range ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-min="1" data-max="500" data-step="1" data-default-min="1" data-default-max="195" data-currency="$" aria-disabled="false">
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 38.8778%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 38.8778%;"></a>
+                                        </div>
+                                        <div class="clearfix">
+                                            <input type="text" class="range-from" value="$ 1">
+                                            <input type="text" class="range-to" value="$ 500">
+                                        </div>
+                                    </div>
+                                    <!-- end .slider-range-container -->
+                                </div>
+                            </div>
+                            <!-- end .price-filter -->
+                        </div>
+                        <!-- end .properties-search-filter -->
+
+                        <div class="find-on-map">
+                            <h5>Search by Region</h5>
+                            <div class="banner-search">
+                                <div class="banner-search-inner">
+                                    <ul class="custom-list tab-content-list">
+                                        <li class="tab-content active">
+                                            <span class="select-box" title="Country">
+                                                <input class="value-holder" type="text" disabled="disabled" placeholder="Country"><i class="fa fa-chevron-down"></i><ul class="select-clone custom-list"><li data-value="USA">USA</li><li data-value="Uk">UK</li><li data-value="India">India</li><li data-value="Bangladesh">Bangladesh</li><li data-value="Portugal">Portugal</li></ul>
+                                                <select name="Country" data-placeholder="Country">
+                                                    <option>Country</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="Uk">UK</option>
+                                                    <option value="India">India</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Portugal">Portugal</option>
+                                                </select>
+                                            </span>
+                                            <span class="select-box" title="Region">
+                                                <input class="value-holder" type="text" disabled="disabled" placeholder="Region"><i class="fa fa-chevron-down"></i><ul class="select-clone custom-list"><li data-value="USA">USA</li><li data-value="Uk">UK</li><li data-value="India">India</li><li data-value="Bangladesh">Bangladesh</li><li data-value="Portugal">Portugal</li></ul>
+                                                <select name="Region" data-placeholder="Region">
+                                                    <option>Region</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="Uk">UK</option>
+                                                    <option value="India">India</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Portugal">Portugal</option>
+                                                </select>
+                                            </span>
+                                            <span class="select-box" title="ZIP Code">
+                                                <input class="value-holder" type="text" disabled="disabled" placeholder="ZIP Code"><i class="fa fa-chevron-down"></i><ul class="select-clone custom-list"><li data-value="USA">USA</li><li data-value="Uk">UK</li><li data-value="India">India</li><li data-value="Bangladesh">Bangladesh</li><li data-value="Portugal">Portugal</li></ul>
+                                                <select name="ZIP Code" data-placeholder="ZIP Code">
+                                                    <option>ZIP Code</option>
+                                                    <option value="USA">USA</option>
+                                                    <option value="Uk">UK</option>
+                                                    <option value="India">India</option>
+                                                    <option value="Bangladesh">Bangladesh</option>
+                                                    <option value="Portugal">Portugal</option>
+                                                </select>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- end .map-section -->
+                                </div>
+                                <!-- end .banner-search-inner -->
+                            </div>
+                            <!-- end .banner-search -->
+                        </div>
+                        <!-- end .find-on-map -->
+                    </form>
+                    <!-- end form -->
                 </div>
-                <div class="modal-body" style="padding-right: 1rem;padding-left: 1rem;display:  flex;">
-                    <a class="btn btn-primary" href="/Orderstatus" style="margin-right:10px; width:  150px;">
-                        Track Order
-                    </a>
-                    <a class="btn btn-primary" href="/Feedback" style="margin-right:10px; width: 150px;">
-                        Leave Feedback
-                    </a>
-
-                    <!--  <a class="btn btn-primary" href="/Branches" style="width: 150px;">
-    Şube Listesi
-
-            </a>  -->
-                </div>
-
-                <div class="modal-footer" style="">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
+                <!-- end side-panel -->
             </div>
-
+            <!--end .col-md-3 -->
         </div>
+        <!-- end .row -->
     </div>
-    <div id="searchmodal" class="modal fade" role="dialog" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header" style="
-">
-                    <h4 class="modal-title" style="margin-left: 1rem;">Settings</h4><button type="button" class="close" data-dismiss="modal">x</button>
-
-
-                </div>
-
-                <a class="btn btn-primary" href="/User/account" style="margin-right:10px; width:  150px;">
-                    Change info
-                </a>
-                <a class="btn btn-primary" href="/User/Logout" style="margin-right:10px; width: 150px;">
-                    Log out
-                </a>
-
-
-                <div class="modal-footer" style="
-">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
+    <!--end .container -->
+    <!-- footer begin -->
+    <!-- end #footer -->
 </div>
-<div class="container-fluid" style="text-align:center;">
-    <img src="http://www.imgim.com/logotasarım2.jpg" style="width:50%;">
-    <div class="center-flex">
-        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#addmodal">
-            <img src="http://www.imgim.com/order-food-icon-10.jpg" style="width: 30%;">
-            <h3 style="margin-top: 10px;">
-                Order
-            </h3>
-            
-            <div class="menu-info">
-                <a>
-                    <img src="http://www.imgim.com/menu(1).png" width="15" style="margin:5px" />
-                    Menu
-                </a>
-                <a>
-                    <img src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-1/512/search-icon.png" width="15" style="margin:5px" />
-                    Search
-                </a>
-                <a>
-                    <img src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Cart-add-icon.png" width="17" style="margin:5px" />
-                    View Cart
-                </a>
-            </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-        </div>
-        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#transmodal">
-            <img src="http://www.imgim.com/ordertruck.png" style="width: 50%;">
-
-            <h3 style="margin-top: 10px;">
-                Order Status
-            </h3>
-            <div class="menu-info">
-                <a>
-                    <img src="http://www.imgim.com/food_app_-_filled_outline_-_29-33-512.png" width="20" style="margin:5px" />
-                    Track Order
-                </a>
-                <a>
-                    <img src="http://www.imgim.com/customer-feedback-icon-52.png" width="20" style="margin:5px" />
-                    Leave Feedback
-                </a>
-                <!-- <a>
-           <img src="https://cdn0.iconfinder.com/data/icons/octicons/1024/primitive-dot-512.png" width="5" style="opacity:.5;margin:5px" />
-           Şubeleri Listele
-       </a>-->
-            </div>
-        </div>
-        <div class="maindiv-buttonbox" data-toggle="modal" data-target="#searchmodal">
-            <img src="http://www.imgim.com/3846incii4893081.png" style="width: 30%;">
-            <h3 style="margin-top: 10px;">
-                Settings
-            </h3>
-
-            <div class="menu-info">
-                <a>
-                    <img src="http://www.imgim.com/pngtree-vector-edit-profile-icon-png-image_4101361.jpg" width="25" style="margin:5px" />
-                    Change info
-                </a>
-                <a>
-                    <img src="https://www.flaticon.com/premium-icon/icons/svg/276/276363.svg" width="25" style="margin:5px" />
-                    Log out
-                </a>
-
-            </div>
-        </div>
-    </div>
-</div>
 <script>
+
+    $(".quantity_button").click(function () {
+
+        var productId = $(this).parent().find('.productId').attr("data-id");
+        var prodcutQuatity = $(this).parent().find('.productQuantity').val();
+
+        var data = { productId: productId, quantity: prodcutQuatity};
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("CartChanged", "Home")',
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                if (data === "LoginRequired")
+                    window.location.href = "/CustomerLogin/Index";
+
+            }
+        });
+
+    });
+
+    
+
     $('#txtSearchBarcode').keypress(function (e) {
         if (e.which == 13) {
             window.location.href = "/Products/Barcode?barcode=" + $("#txtSearchBarcode").val();
             return false;
         }
     });
-    $("#btnSearchBarcode").click(function ()
-    {
-        window.location.href = "/Products/Barcode?barcode="+$("#txtSearchBarcode").val();
+    $("#btnSearchBarcode").click(function () {
+        window.location.href = "/Products/Barcode?barcode=" + $("#txtSearchBarcode").val();
     });
-    
+
 </script>

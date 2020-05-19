@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,23 +126,174 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartDetailsController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CustomerLoginController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductTypesController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UserLoginController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Data\TOPOSContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005181526131_InitialCreate.cs" />
+    <Compile Include="Migrations\202005181526131_InitialCreate.Designer.cs">
+      <DependentUpon>202005181526131_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005181539103_ProdutTableUpated.cs" />
+    <Compile Include="Migrations\202005181539103_ProdutTableUpated.Designer.cs">
+      <DependentUpon>202005181539103_ProdutTableUpated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005191546497_dds.cs" />
+    <Compile Include="Migrations\202005191546497_dds.Designer.cs">
+      <DependentUpon>202005191546497_dds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005191601130_upt.cs" />
+    <Compile Include="Migrations\202005191601130_upt.Designer.cs">
+      <DependentUpon>202005191601130_upt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CartDetails.cs" />
+    <Compile Include="Models\Carts.cs" />
+    <Compile Include="Models\Customers.cs" />
+    <Compile Include="Models\Enums\Roles.cs" />
+    <Compile Include="Models\Enums\Status.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\ProductTypes.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ajax\libs\jquery\1.11.0\jquery.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css-1.css" />
+    <Content Include="css.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\owl.theme.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\sb-admin.css" />
+    <Content Include="css\sb-admin.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\thumb-slide.css" />
     <Content Include="favicon.ico" />
+    <Content Include="font-awesome\4.1.0\css\font-awesome.min.css" />
+    <Content Include="font-awesome\4.1.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\content\blog-post-1.png" />
+    <Content Include="img\content\blog-post-2.png" />
+    <Content Include="img\content\blog-post-3.png" />
+    <Content Include="img\content\blog-post-4.png" />
+    <Content Include="img\content\blog-post-5.png" />
+    <Content Include="img\content\blog-post.jpg" />
+    <Content Include="img\content\call-to-action-icon1.png" />
+    <Content Include="img\content\chef-1.jpg" />
+    <Content Include="img\content\chef-2.jpg" />
+    <Content Include="img\content\chef-3.jpg" />
+    <Content Include="img\content\chef-img.jpg" />
+    <Content Include="img\content\chef-welcome-bg.jpg" />
+    <Content Include="img\content\clints-say-bg.jpg" />
+    <Content Include="img\content\comment-img.jpg" />
+    <Content Include="img\content\desserts.png" />
+    <Content Include="img\content\dish-img.jpg" />
+    <Content Include="img\content\dish-img1.jpg" />
+    <Content Include="img\content\drinks.png" />
+    <Content Include="img\content\fastfood.png" />
+    <Content Include="img\content\fruits.png" />
+    <Content Include="img\content\heading-bg.jpg" />
+    <Content Include="img\content\landing-about-us.jpg" />
+    <Content Include="img\content\landing-cover.jpg" />
+    <Content Include="img\content\landing-find-us.jpg" />
+    <Content Include="img\content\lt-blog-img.png" />
+    <Content Include="img\content\main-dish.png" />
+    <Content Include="img\content\map-1.jpg" />
+    <Content Include="img\content\meat-fish.png" />
+    <Content Include="img\content\menu-heading.jpg" />
+    <Content Include="img\content\menu-list-img.jpg" />
+    <Content Include="img\content\milk.png" />
+    <Content Include="img\content\neggies.png" />
+    <Content Include="img\content\order-online.jpg" />
+    <Content Include="img\content\sm-slide-img-2.png" />
+    <Content Include="img\content\sm-slide-img1.png" />
+    <Content Include="img\content\starter.png" />
+    <Content Include="img\header-logo.png" />
+    <Content Include="img\landing-logo.png" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="js\jquery.magnific-popup.min.js" />
+    <Content Include="js\jquery.ui.map.js" />
+    <Content Include="js\masterslider\blank.gif" />
+    <Content Include="js\masterslider\masterslider.min.js" />
+    <Content Include="js\masterslider\skins\black-2\black-skin-2-retina.png" />
+    <Content Include="js\masterslider\skins\black-2\black-skin-2.png" />
+    <Content Include="js\masterslider\skins\black-2\style.css" />
+    <Content Include="js\masterslider\style\grab.png" />
+    <Content Include="js\masterslider\style\grabbing.png" />
+    <Content Include="js\masterslider\style\loading-2.gif" />
+    <Content Include="js\masterslider\style\masterslider.css" />
+    <Content Include="js\masterslider\style\video-close-btn.png" />
+    <Content Include="js\owl.carousel.js" />
+    <Content Include="js\sb-admin-charts.js" />
+    <Content Include="js\sb-admin-charts.min.js" />
+    <Content Include="js\sb-admin-datatables.js" />
+    <Content Include="js\sb-admin-datatables.min.js" />
+    <Content Include="js\sb-admin.js" />
+    <Content Include="js\sb-admin.min.js" />
+    <Content Include="js\scripts.js" />
+    <Content Include="Resources\add.png" />
+    <Content Include="Resources\add_1.png" />
+    <Content Include="Resources\Android-Barcode-Reader.png" />
+    <Content Include="Resources\attach.png" />
+    <Content Include="Resources\barcode-scanner.png" />
+    <Content Include="Resources\barcode.png" />
+    <Content Include="Resources\cart.png" />
+    <Content Include="Resources\caution.png" />
+    <Content Include="Resources\cwest.jpg" />
+    <Content Include="Resources\cwman.jpg" />
+    <Content Include="Resources\edit.png" />
+    <Content Include="Resources\enterprise.png" />
+    <Content Include="Resources\favicon.ico" />
+    <Content Include="Resources\file.png" />
+    <Content Include="Resources\folder.png" />
+    <Content Include="Resources\funnel.png" />
+    <Content Include="Resources\info.png" />
+    <Content Include="Resources\loading.gif" />
+    <Content Include="Resources\maps.png" />
+    <Content Include="Resources\office-material.png" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\shopping-bag.png" />
+    <Content Include="Resources\sketch.png" />
+    <Content Include="Resources\trash.png" />
+    <Content Include="Resources\wall.png" />
+    <Content Include="Resources\wman.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="font-awesome\4.1.0\fonts\fontawesome-webfont-1.eot" />
+    <Content Include="font-awesome\4.1.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="font-awesome\4.1.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="font-awesome\4.1.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="maps\api\js" />
+    <Content Include="fonts\fontawesome-webfont-1.eot" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -148,6 +305,114 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="takeaway\blog-list.html" />
+    <Content Include="takeaway\blog-post.html" />
+    <Content Include="takeaway\chef.html" />
+    <Content Include="takeaway\contact-us.html" />
+    <Content Include="takeaway\css\bootstrap.css" />
+    <Content Include="takeaway\css\font-awesome.min.css" />
+    <Content Include="takeaway\css\owl.carousel.css" />
+    <Content Include="takeaway\css\owl.theme.css" />
+    <Content Include="takeaway\css\responsive.css" />
+    <Content Include="takeaway\css\style.css" />
+    <Content Include="takeaway\css\thumb-slide.css" />
+    <Content Include="takeaway\dish-with-no-sidebar.html" />
+    <Content Include="takeaway\dish.html" />
+    <Content Include="takeaway\event-page.html" />
+    <Content Include="takeaway\fonts\fontawesome-webfont.svg" />
+    <Content Include="takeaway\img\content\blog-post-1.png" />
+    <Content Include="takeaway\img\content\blog-post-2.png" />
+    <Content Include="takeaway\img\content\blog-post-3.png" />
+    <Content Include="takeaway\img\content\blog-post-4.png" />
+    <Content Include="takeaway\img\content\blog-post-5.png" />
+    <Content Include="takeaway\img\content\blog-post.jpg" />
+    <Content Include="takeaway\img\content\call-to-action-icon1.png" />
+    <Content Include="takeaway\img\content\chef-1.jpg" />
+    <Content Include="takeaway\img\content\chef-2.jpg" />
+    <Content Include="takeaway\img\content\chef-3.jpg" />
+    <Content Include="takeaway\img\content\chef-img.jpg" />
+    <Content Include="takeaway\img\content\chef-welcome-bg.jpg" />
+    <Content Include="takeaway\img\content\clints-say-bg.jpg" />
+    <Content Include="takeaway\img\content\comment-img.jpg" />
+    <Content Include="takeaway\img\content\desserts.png" />
+    <Content Include="takeaway\img\content\dish-img.jpg" />
+    <Content Include="takeaway\img\content\dish-img1.jpg" />
+    <Content Include="takeaway\img\content\drinks.png" />
+    <Content Include="takeaway\img\content\fastfood.png" />
+    <Content Include="takeaway\img\content\fruits.png" />
+    <Content Include="takeaway\img\content\heading-bg.jpg" />
+    <Content Include="takeaway\img\content\landing-about-us.jpg" />
+    <Content Include="takeaway\img\content\landing-cover.jpg" />
+    <Content Include="takeaway\img\content\landing-find-us.jpg" />
+    <Content Include="takeaway\img\content\lt-blog-img.png" />
+    <Content Include="takeaway\img\content\main-dish.png" />
+    <Content Include="takeaway\img\content\map-1.jpg" />
+    <Content Include="takeaway\img\content\meat-fish.png" />
+    <Content Include="takeaway\img\content\menu-heading.jpg" />
+    <Content Include="takeaway\img\content\menu-list-img.jpg" />
+    <Content Include="takeaway\img\content\milk.png" />
+    <Content Include="takeaway\img\content\neggies.png" />
+    <Content Include="takeaway\img\content\order-online.jpg" />
+    <Content Include="takeaway\img\content\sm-slide-img-2.png" />
+    <Content Include="takeaway\img\content\sm-slide-img1.png" />
+    <Content Include="takeaway\img\content\starter.png" />
+    <Content Include="takeaway\img\header-logo.png" />
+    <Content Include="takeaway\img\landing-logo.png" />
+    <Content Include="takeaway\index-landingpage.html" />
+    <Content Include="takeaway\index.htm" />
+    <Content Include="takeaway\index.html" />
+    <Content Include="takeaway\js\bootstrap.js" />
+    <Content Include="takeaway\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="takeaway\js\jquery.magnific-popup.min.js" />
+    <Content Include="takeaway\js\jquery.ui.map.js" />
+    <Content Include="takeaway\js\masterslider\blank.gif" />
+    <Content Include="takeaway\js\masterslider\masterslider.min.js" />
+    <Content Include="takeaway\js\masterslider\skins\black-2\black-skin-2-retina.png" />
+    <Content Include="takeaway\js\masterslider\skins\black-2\black-skin-2.png" />
+    <Content Include="takeaway\js\masterslider\skins\black-2\style.css" />
+    <Content Include="takeaway\js\masterslider\style\grab.png" />
+    <Content Include="takeaway\js\masterslider\style\grabbing.png" />
+    <Content Include="takeaway\js\masterslider\style\loading-2.gif" />
+    <Content Include="takeaway\js\masterslider\style\masterslider.css" />
+    <Content Include="takeaway\js\masterslider\style\video-close-btn.png" />
+    <Content Include="takeaway\js\owl.carousel.js" />
+    <Content Include="takeaway\js\scripts.js" />
+    <Content Include="takeaway\menu%282grid-list%29.html" />
+    <Content Include="takeaway\menu%28view-1%29.html" />
+    <Content Include="takeaway\menu%28view-2%29.html" />
+    <Content Include="takeaway\menu-with-right-checkout.html" />
+    <Content Include="takeaway\menu-without-side-panel.html" />
+    <Content Include="takeaway\news-events.html" />
+    <Content Include="takeaway\our-team.html" />
+    <Content Include="takeaway\shortcodes.html" />
+    <Content Include="takeaway\single-menu.html" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\chart.js\Chart.bundle.js" />
+    <Content Include="vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="vendor\chart.js\Chart.js" />
+    <Content Include="vendor\chart.js\Chart.min.js" />
+    <Content Include="vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="vendor\datatables\jquery.dataTables.js" />
+    <Content Include="vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="vendor\jquery\jquery.slim.js" />
+    <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -159,13 +424,104 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\ProductTypes\Create.cshtml" />
+    <Content Include="Views\ProductTypes\Delete.cshtml" />
+    <Content Include="Views\ProductTypes\Details.cshtml" />
+    <Content Include="Views\ProductTypes\Edit.cshtml" />
+    <Content Include="Views\ProductTypes\Index.cshtml" />
+    <Content Include="Views\CartDetails\Delete.cshtml" />
+    <Content Include="Views\CartDetails\Edit.cshtml" />
+    <Content Include="Views\CartDetails\Index.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\OrderDetails\Create.cshtml" />
+    <Content Include="Views\OrderDetails\Delete.cshtml" />
+    <Content Include="Views\OrderDetails\Details.cshtml" />
+    <Content Include="Views\OrderDetails\Edit.cshtml" />
+    <Content Include="Views\OrderDetails\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="vendor\font-awesome\less\animated.less" />
+    <Content Include="vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="vendor\font-awesome\less\core.less" />
+    <Content Include="vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="vendor\font-awesome\less\icons.less" />
+    <Content Include="vendor\font-awesome\less\larger.less" />
+    <Content Include="vendor\font-awesome\less\list.less" />
+    <Content Include="vendor\font-awesome\less\mixins.less" />
+    <Content Include="vendor\font-awesome\less\path.less" />
+    <Content Include="vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="vendor\font-awesome\less\stacked.less" />
+    <Content Include="vendor\font-awesome\less\variables.less" />
+    <Content Include="vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="vendor\font-awesome\scss\_core.scss" />
+    <Content Include="vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="vendor\font-awesome\scss\_list.scss" />
+    <Content Include="vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="vendor\font-awesome\scss\_path.scss" />
+    <Content Include="vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="vendor\jquery\jquery.min.map" />
+    <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="s\nothingyoucoulddo\v9\oY1B8fbBpaP5OX3DtrRYf_Q2BPB1SnfZb3OOnV4.ttf" />
+    <Content Include="s\robotoslab\v11\BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjoa4Omb2Rm.ttf" />
+    <Content Include="s\robotoslab\v11\BngbUXZYTXPIvIBgJJSb6s3BzlRRfKOFbvjojISmb2Rm.ttf" />
+    <Content Include="takeaway\fonts\fontawesome-webfont-1.eot" />
+    <Content Include="takeaway\fonts\fontawesome-webfont.eot" />
+    <Content Include="takeaway\fonts\fontawesome-webfont.ttf" />
+    <Content Include="takeaway\fonts\fontawesome-webfont.woff" />
+    <Content Include="Views\CustomerLogin\Index.cshtml" />
+    <Content Include="Views\UserLogin\Index.cshtml" />
+    <Content Include="Views\Carts\Create.cshtml" />
+    <Content Include="Views\Carts\Delete.cshtml" />
+    <Content Include="Views\Carts\Details.cshtml" />
+    <Content Include="Views\Carts\Edit.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +535,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202005181526131_InitialCreate.resx">
+      <DependentUpon>202005181526131_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005181539103_ProdutTableUpated.resx">
+      <DependentUpon>202005181539103_ProdutTableUpated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005191546497_dds.resx">
+      <DependentUpon>202005191546497_dds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005191601130_upt.resx">
+      <DependentUpon>202005191601130_upt.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

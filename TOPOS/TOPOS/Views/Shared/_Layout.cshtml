@@ -1,40 +1,259 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <style>
+        .gm-control-active > img {
+            box-sizing: content-box;
+            display: none;
+            left: 50%;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%)
+        }
+
+            .gm-control-active > img:nth-child(1) {
+                display: block
+            }
+
+        .gm-control-active:hover > img:nth-child(1), .gm-control-active:active > img:nth-child(1) {
+            display: none
+        }
+
+        .gm-control-active:hover > img:nth-child(2), .gm-control-active:active > img:nth-child(3) {
+            display: block
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700">
+    <style>
+        .gm-ui-hover-effect {
+            opacity: .6
+        }
+
+            .gm-ui-hover-effect:hover {
+                opacity: 1
+            }
+    </style>
+    <style>
+        .gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+            font-size: 10px;
+            box-sizing: border-box
+        }
+    </style>
+    <style>
+        .dismissButton {
+            background-color: #fff;
+            border: 1px solid #dadce0;
+            color: #1a73e8;
+            border-radius: 4px;
+            font-family: Roboto,sans-serif;
+            font-size: 14px;
+            height: 36px;
+            cursor: pointer;
+            padding: 0 24px
+        }
+
+            .dismissButton:hover {
+                background-color: rgba(66,133,244,0.04);
+                border: 1px solid #d2e3fc
+            }
+
+            .dismissButton:focus {
+                background-color: rgba(66,133,244,0.12);
+                border: 1px solid #d2e3fc;
+                outline: 0
+            }
+
+            .dismissButton:hover:focus {
+                background-color: rgba(66,133,244,0.16);
+                border: 1px solid #d2e2fd
+            }
+
+            .dismissButton:active {
+                background-color: rgba(66,133,244,0.16);
+                border: 1px solid #d2e2fd;
+                box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3),0 1px 3px 1px rgba(60,64,67,0.15)
+            }
+
+            .dismissButton:disabled {
+                background-color: #fff;
+                border: 1px solid #f1f3f4;
+                color: #3c4043
+            }
+    </style>
+    <style>
+        .gm-style-pbc {
+            transition: opacity ease-in-out;
+            background-color: rgba(0,0,0,0.45);
+            text-align: center
+        }
+
+        .gm-style-pbt {
+            font-size: 22px;
+            color: white;
+            font-family: Roboto,Arial,sans-serif;
+            position: relative;
+            margin: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%)
+        }
+    </style>
+    <style>
+        .gm-style img {
+            max-width: none;
+        }
+
+        .gm-style {
+            font: 400 11px Roboto, Arial, sans-serif;
+            text-decoration: none;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title Tomate</title>
+    <link href="..\css.css?family=Roboto+Slab:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="~/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/js/masterslider/style/masterslider.css">
+    <link rel="stylesheet" href="~/js/masterslider/skins/black-2/style.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/owl.theme.css">
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/util.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/map.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/controls.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/onion.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/marker.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://maps.google.com/maps-api-v3/api/js/40/12/common.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+    </script>
+
+    <script src="~/js/scripts.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <header id="header">
+        <div class="header-top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="header-login">
+                            @{if (Session["Id"] == null)
+                                {<a href="#">Login</a>}
+                                @*else
+                                {<a href="#"> Login </a>}*@
+                            }
+                        </div>
+                        <!-- end .header-login -->
+                        <!-- Header Social -->
+                        <ul class="header-social">
+                            <li>
+                                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-7 col-sm-12 col-xs-12">
+                        <p class="call-us">
+                            Call Us: <a class="font" href="#">0533 876 5432</a>
+                            <span class="open-now"><i class="fa fa-check-square"></i>We are open now(9am-10pm)</span>
+                            <span class="close-now" style="display: none;"><i class="fa fa-square"></i>We are close now(10pm-9am)</span>
+                        </p>
+                    </div>
+                </div> <!-- end .row -->
+            </div> <!-- end .container -->
         </div>
-    </div>
-    <div class="container body-content">
+        <!-- end .header-top-bar -->
+
+        <div class="header-nav-bar">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <img src="~/img/header-logo.png" alt="TakeAway">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="../home/">Menu</a>
+
+                            </li>
+                            <li>
+                                <a href="contact-us.html">Track Order</a>
+                            </li>
+                            <li>
+                                <a href="contact-us.html">My Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+        <!-- end .header-nav-bar -->
+
+    </header>
+    <div class="container body-content" id="main-wrapper">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+    </div>
+    <footer id="footer">
+
+        <div class="footer-copyright">
+            <div class="container">
+                <p>Copyright 2020 © Tomate. All rights reserved. Powered by <a href="#">Students</a>.</p>
+                <ul class="footer-social">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-google-plus-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-pinterest-square"></i></a>
+                    </li>
+                </ul>
+                <!-- end .footer-social -->
+            </div>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
