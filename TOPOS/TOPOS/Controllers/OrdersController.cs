@@ -22,7 +22,15 @@ namespace TOPOS.Controllers
             var orders = db.Orders.Include(o => o.Customers);
             return View(orders.ToList());
         }
-            
+
+        public ActionResult Track()
+        {
+            var userId = (long) Session["LoginId"];
+            var orders = db.Orders.Include(o => o.Customers).Where(o => o.CustomersId == userId);
+
+            return View("Index", orders.ToList());
+        }
+
         public ActionResult Orderdetails(long Id)
         {
             return RedirectToAction("View", "OrderDetails", new { id = Id });

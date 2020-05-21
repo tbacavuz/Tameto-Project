@@ -26,7 +26,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model.Where(o => o.StatusType != TOPOS.Models.Enums.StatusType.End)) {
+@foreach (var item in Model.Where(o => o.StatusType != TOPOS.Models.Enums.StatusType.End))
+{
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.Customers.NameSurname)
@@ -40,12 +41,21 @@
     <td>
         @Html.DisplayFor(modelItem => item.StatusType)
     </td>
-    <td>
-        @Html.ActionLink("Edit Status", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
-        @Html.ActionLink("View Details", "Orderdetails", new { id = item.Id }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Complete", "Complete", new { id = item.Id }, new { @class = "btn btn-success" })
-    </td>
-</tr>
-}
+    @if ((TOPOS.Models.Enums.LoginType)Session["LoginType"] != TOPOS.Models.Enums.LoginType.Customer)
+    {
+            <td>
+                @Html.ActionLink("View Details", "Orderdetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Edit Status", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+                @Html.ActionLink("Complete", "Complete", new { id = item.Id }, new { @class = "btn btn-success", })
+            </td>
+    }
+    else
+    {
+            <td>
+                @Html.ActionLink("View Details", "Orderdetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </td>
 
+    }
+    </tr>
+}
 </table>
