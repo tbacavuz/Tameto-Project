@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using TOPOS.Models.Enums;
+@{
+    Session["LoginType"] = Session["LoginType"] is null ? LoginType.NotSet : (LoginType)Session["LoginType"];
+    Session["RoleType"] = Session["RoleType"] is null ? RolesTypes.NotSet : (RolesTypes)Session["RoleType"];
+}
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <style>
@@ -146,10 +153,12 @@
                 <div class="row">
                     <div class="col-md-5 col-sm-12 col-xs-12">
                         <div class="header-login">
-                            @{if (Session["Id"] == null)
-                                {<a href="#">Login</a>}
-                                @*else
-                                {<a href="#"> Login </a>}*@
+                            @{if ((LoginType)Session["LoginType"] == LoginType.NotSet)
+                                {<a href="../CustomerLogin/">Login</a>}
+                                else
+                                {
+                                    <a href="../CustomerLogin/">Logout</a>
+                                }
                             }
                         </div>
                         <!-- end .header-login -->
@@ -196,7 +205,8 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="#">
-                            <img src="~/img/header-logo.png" alt="TakeAway">
+                            <img  style="width: 35%;
+    margin-top: 0;"  src="~/img/header-logo.png" alt="TakeAway">
                         </a>
                     </div>
 
@@ -207,12 +217,39 @@
                                 <a href="../home/">Menu</a>
 
                             </li>
-                            <li>
-                                <a href="contact-us.html">Track Order</a>
-                            </li>
-                            <li>
-                                <a href="contact-us.html">My Profile</a>
-                            </li>
+                            @{if ((LoginType)Session["LoginType"] is LoginType.Customer)
+                                {
+                                    <li>
+                                        <a href="../Cartdetails/">View Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="../OrderDetails">Track Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="../Customers/Details">My Profile</a>
+                                    </li>
+                                }
+                            }
+                            @{if ((LoginType)Session["LoginType"] is LoginType.User)
+                                {
+                                    <li>
+                                        <a href="../Orders/">Orders</a>
+                                    </li>
+                                }
+                            }
+                            @{if ((RolesTypes)Session["RoleType"] is RolesTypes.Admin)
+                                {
+                                    <li>
+                                        <a href="../Products/">Products</a>
+                                    </li>
+                                    <li>
+                                        <a href="../Customers/">Customers</a>
+                                    </li>
+                                    <li>
+                                        <a href="../Users/">Workers</a>
+                                    </li>
+                                }
+                            }
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

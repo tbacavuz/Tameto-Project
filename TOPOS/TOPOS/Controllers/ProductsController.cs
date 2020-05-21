@@ -4,10 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using TOPOS.Data;
 using TOPOS.Models;
+using TOPOS.Models.Enums;
 
 namespace TOPOS.Controllers
 {
@@ -18,8 +20,22 @@ namespace TOPOS.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            var products = db.Products.Include(p => p.ProductTypes);
-            return View(products.ToList());
+            var type = (LoginType)Session["LoginType"];
+            if(type == LoginType.User)
+            {
+                var role = (RolesTypes)Session["RoleType"];
+
+                if (role == RolesTypes.Admin)
+                {
+                    var products = db.Products.Include(p => p.ProductTypes);
+                    return View(products.ToList());
+                }
+                else return View("Error");
+            }
+            else
+            {
+                return View("Home","Index");
+            }
         }
 
         // GET: Products/Details/5

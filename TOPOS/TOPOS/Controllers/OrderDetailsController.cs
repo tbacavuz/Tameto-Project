@@ -18,8 +18,22 @@ namespace TOPOS.Controllers
         // GET: OrderDetails
         public ActionResult Index()
         {
-            var orderDetails = db.OrderDetails.Include(o => o.Orders).Include(o => o.Products);
-            return View(orderDetails.ToList());
+            var userId = (long)Session["LoginId"];
+
+            var order = db.Orders.Include(o => o.OrderDetails)
+                                    .Include("OrderDetails.Products")
+                                        .FirstOrDefault(c => c.CustomersId == userId);
+
+            return View(order);
+        }
+
+        public ActionResult View(long id)
+        {
+            var order = db.Orders.Include(o => o.OrderDetails)
+                                    .Include("OrderDetails.Products")
+                                        .FirstOrDefault(c => c.Id == id);
+
+            return View("Index",order);
         }
 
         // GET: OrderDetails/Details/5

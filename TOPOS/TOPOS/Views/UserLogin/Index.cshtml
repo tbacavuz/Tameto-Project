@@ -1,14 +1,12 @@
-﻿@model IEnumerable<TOPOS.Models.Users>
-
+﻿@model TOPOS.Models.Users
 @{
-    ViewBag.Title = "Worker Login";
     Layout = null;
 }
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Worker Login</title>
+    <title>Login</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -83,39 +81,37 @@
          src="~/img/landing-logo.png" />
 
     <div style="margin-top:1rem;background-color:#ffffff;border-radius:inherit">
-        @using (Html.BeginForm("Auth", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Index", "UserLogin", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
             <div class="container">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="isim.soyisim" name="username" required="">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
 
                 <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="" name="password" required="" id="pass">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
 
                 <button type="submit">Login</button>
             </div>
 
             <a class="west-text-error">@ViewBag.Error</a>
 
-            <div class="container" style="        background-color: #f1f1f1
-">
+            <div class="container" style="background-color: #f1f1f1">
                 <button type="button" class="revealpsw" onmouseup="showpsw()" onmousedown="showpsw()">Show Password</button>
-                <button type="button" href="~/Customers/Create" class="revealpsw" style="background-color: #4CAF50;margin-left: 27vh;">Create Account</button>
             </div>
-
         }
+
     </div>
     <script>
-            function showpsw() {
-                var x = document.getElementById("pass");
-                if (x.type === "password") {
-                    x.type = "text";
-                } else {
-                    x.type = "password";
-                }
-            }</script>
+        function showpsw() {
+            var x = document.getElementById("Password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }</script>
 
 
 </body>

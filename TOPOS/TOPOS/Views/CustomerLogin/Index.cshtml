@@ -92,7 +92,7 @@
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
 
             <label for="psw"><b>Password</b></label>
-            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
 
             <button type="submit">Login</button>
         </div>
@@ -107,9 +107,10 @@
         }
 
     </div>
+    <div><h4 style="margin-left:50%;color:white">or</h4><button><a class="btn-success" href="../home" style="text-decoration: none; color: white;">Proceed as Guest</a></button></div>
     <script>
         function showpsw() {
-            var x = document.getElementById("pass");
+            var x = document.getElementById("Password");
             if (x.type === "password") {
                 x.type = "text";
             } else {

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TOPOS.Data;
 using TOPOS.Models;
+using TOPOS.Models.Enums;
 
 namespace TOPOS.Controllers
 {
@@ -20,6 +21,24 @@ namespace TOPOS.Controllers
         {
             var orders = db.Orders.Include(o => o.Customers);
             return View(orders.ToList());
+        }
+            
+        public ActionResult Orderdetails(long Id)
+        {
+            return RedirectToAction("View", "OrderDetails", new { id = Id });
+        }
+
+        public ActionResult Complete(long id)
+        {
+            var checkOrder = db.Orders.Find(id);
+
+            if(checkOrder is null)
+                return View(db.Orders.Include(o => o.Customers).ToList());
+
+            checkOrder.StatusId = (long)StatusType.End;
+            db.SaveChanges();
+
+            return View("Index", db.Orders.Include(o => o.Customers).ToList());
         }
 
         // GET: Orders/Details/5
@@ -49,7 +68,7 @@ namespace TOPOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Date,Status,CustomersId")] Orders orders)
+        public ActionResult Create([Bind(Include = "Id,Date,StatusId,CustomersId")] Orders orders)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +76,7 @@ namespace TOPOS.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            
             ViewBag.CustomersId = new SelectList(db.Customers, "Id", "NameSurname", orders.CustomersId);
             return View(orders);
         }
@@ -74,6 +93,15 @@ namespace TOPOS.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.StatusId = new SelectList(new List<SelectListItem>
+                                              {
+                                                    new SelectListItem { Text = "Waiting", Value = ((long)StatusType.Waiting).ToString()},
+                                                    new SelectListItem { Text = "InQueue", Value =  ((long)StatusType.InQueue).ToString()},
+                                                    new SelectListItem { Text = "Preparing", Value =  ((long)StatusType.Preparing).ToString()},
+                                                    new SelectListItem { Text = "OnTheWay", Value =  ((long)StatusType.OnTheWay).ToString()},
+                                              }, "Value", "Text");
+
             ViewBag.CustomersId = new SelectList(db.Customers, "Id", "NameSurname", orders.CustomersId);
             return View(orders);
         }
@@ -83,7 +111,7 @@ namespace TOPOS.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Date,Status,CustomersId")] Orders orders)
+        public ActionResult Edit([Bind(Include = "Id,Date,StatusId,CustomersId")] Orders orders)
         {
             if (ModelState.IsValid)
             {

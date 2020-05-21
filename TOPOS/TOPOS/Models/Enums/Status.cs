@@ -5,8 +5,9 @@ using System.Web;
 
 namespace TOPOS.Models.Enums
 {
-    public enum Status
+    public enum StatusType
     {
+        NotSet = 0,
         Waiting = 1,
         InQueue = 2,
         Preparing =3,

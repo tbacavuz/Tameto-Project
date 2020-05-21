@@ -21,5 +21,8 @@ namespace TOPOS.Models
         [ForeignKey("Products")]
         public long ProductId { get; set; }
         public Products Products { get; set; }
+
+        [NotMapped]
+        public double? Price { get => Quantity * Products?.Price; }
     }
 }

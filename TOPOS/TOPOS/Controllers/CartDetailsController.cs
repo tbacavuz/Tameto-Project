@@ -18,13 +18,34 @@ namespace TOPOS.Controllers
         // GET: CartDetails
         public ActionResult Index()
         {
-            var userId = (long)Session["Id"];
+            var userId = (long)Session["LoginId"];
 
             var carts = db.Carts.FirstOrDefault(c => c.CustomerId == userId);
             var cartDetails = db.CartDetails.Where(cd => cd.CartsId == carts.Id).Include(c => c.Products);
 
             return View(cartDetails.ToList());
         }
+
+        public ActionResult SubmitCart()
+        {
+            var userId = (long)Session["LoginId"];
+            var carts = db.Carts.FirstOrDefault(c => c.CustomerId == userId);
+            var cartDetails = db.CartDetails.Where(cd => cd.CartsId == carts.Id).Include(c => c.Products);
+
+            var order = db.Orders.Add(new Orders { CustomersId = userId, Date = DateTime.UtcNow });
+            foreach (var detail in cartDetails) 
+            {
+                db.OrderDetails.Add(new OrderDetails { ProductId = detail.ProductId, Quantity = detail.Quantity, OrderId = order.Id });
+            }
+
+            db.Carts.Remove(carts);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "OrderDetails");
+        }
+
+
+
 
         // GET: CartDetails/Details/5
         public ActionResult Details(long? id)

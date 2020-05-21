@@ -23,6 +23,6 @@ namespace TOPOS.Models
         public Products Products { get; set; }
 
         [NotMapped]
-        public double Price { get => Quantity * Products.Price; }
+        public double? Price { get => Quantity * Products?.Price; }
     }
 }

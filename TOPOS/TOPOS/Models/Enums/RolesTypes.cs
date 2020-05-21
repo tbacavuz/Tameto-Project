@@ -5,10 +5,10 @@ using System.Web;
 
 namespace TOPOS.Models.Enums
 {
-    public enum Roles
+    public enum RolesTypes
     {
         Admin = 1,
         Worker = 2,
-        Delivery = 3
+        NotSet = 3
     }
 }

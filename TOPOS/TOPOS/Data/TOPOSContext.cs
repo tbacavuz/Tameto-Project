@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using TOPOS.Models;
 
 namespace TOPOS.Data
 {
@@ -17,6 +18,16 @@ namespace TOPOS.Data
     
         public TOPOSContext() : base("name=TOPOSContext")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OrderDetails>()
+                .HasRequired<Orders>(o => o.Orders)
+                .WithMany(o => o.OrderDetails)
+                .HasForeignKey<long>(o => o.OrderId);
         }
 
         public System.Data.Entity.DbSet<TOPOS.Models.Users> Users { get; set; }

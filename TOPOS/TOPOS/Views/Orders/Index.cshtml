@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Orders</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,31 +15,37 @@
             @Html.DisplayNameFor(model => model.Customers.NameSurname)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Customers.Address)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
+            Status
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customers.NameSurname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model.Where(o => o.StatusType != TOPOS.Models.Enums.StatusType.End)) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customers.NameSurname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Customers.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StatusType)
+    </td>
+    <td>
+        @Html.ActionLink("Edit Status", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("View Details", "Orderdetails", new { id = item.Id }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Complete", "Complete", new { id = item.Id }, new { @class = "btn btn-success" })
+    </td>
+</tr>
 }
 
 </table>

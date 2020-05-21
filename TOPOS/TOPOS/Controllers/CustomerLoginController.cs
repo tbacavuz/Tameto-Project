@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TOPOS.Data;
 using TOPOS.Models;
+using TOPOS.Models.Enums;
 
 namespace TOPOS.Controllers
 {
@@ -36,7 +37,9 @@ namespace TOPOS.Controllers
             {
                 if (getUser.Password == customers.Password)
                 {
-                    Session["Id"] = getUser.Id;
+                    Session["LoginId"] = getUser.Id;
+                    Session["LoginType"] = LoginType.Customer;
+                    Session["RoleType"] = RolesTypes.NotSet;
                     return RedirectToAction("Index", "Home");
                 }
                 else

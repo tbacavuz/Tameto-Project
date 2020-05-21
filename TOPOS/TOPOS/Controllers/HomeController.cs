@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TOPOS.Data;
 using TOPOS.Models;
+using TOPOS.Models.Enums;
 
 namespace TOPOS.Controllers
 {
@@ -32,12 +33,12 @@ namespace TOPOS.Controllers
         [HttpPost]
         public string CartChanged(long productId, int quantity)
         {
-            if(Session["Id"] is null)
+            if ((LoginType)Session["LoginType"] != LoginType.Customer)
             {
                 return "LoginRequired";
             }
 
-            var userId = (long)Session["Id"];
+            var userId = (long)Session["LoginId"];
 
             var checkCart = db.Carts.FirstOrDefault(c => c.CustomerId == userId);
 
