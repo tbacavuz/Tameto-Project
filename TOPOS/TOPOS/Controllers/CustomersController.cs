@@ -53,7 +53,7 @@ namespace TOPOS.Controllers
             {
                 db.Customers.Add(customers);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "CustomerLogin");
             }
 
             return View(customers);
