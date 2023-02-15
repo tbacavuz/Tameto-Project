@@ -1,2 +1,2 @@
-# Tomate-Project
-Tomate Pizza
+# Tameto-Project
+Tameto Pizza
